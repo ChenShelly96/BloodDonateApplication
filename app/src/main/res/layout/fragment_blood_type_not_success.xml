@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/typeblooduser"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_nav_menu"
+        tools:ignore="VisualLintBottomNav" />
+    <TextView
+        android:id="@+id/nameUserOutput"
+        android:layout_width="101dp"
+        android:layout_height="38dp"
+        android:gravity="center"
+        android:text="____"
+        app:layout_constraintEnd_toStartOf="@+id/titleUser"
+        app:layout_constraintHorizontal_bias="0.906"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints,VisualLintOverlap"
+        tools:layout_editor_absoluteY="234dp" />
+
+    <TextView
+        android:id="@+id/titleUserType3"
+        android:layout_width="222dp"
+        android:layout_height="27dp"
+        android:text="איזה כיף שהצטרפת "
+        android:textColor="#0D0C0C"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck"
+        tools:layout_editor_absoluteY="188dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="206dp"
+        android:layout_height="95dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.737"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/blood_logo"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="16dp"
+        android:importantForAccessibility="no" />
+
+    <TextView
+        android:id="@+id/titleUser"
+        android:layout_width="41dp"
+        android:layout_height="29dp"
+        android:text="היי "
+        android:textColor="#111111"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.735"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck"
+        tools:layout_editor_absoluteY="159dp" />
+
+    <FrameLayout
+        android:id="@+id/text_type_blood"
+        android:layout_width="411dp"
+        android:layout_height="177dp"
+        android:layout_marginTop="24dp"
+        android:background="#E31B2B"
+        android:backgroundTint="#F13131"
+        app:layout_constraintTop_toBottomOf="@+id/titleUserType3"
+        tools:ignore="MissingConstraints,VisualLintBounds"
+        tools:layout_editor_absoluteX="1dp">
+
+        <TextView
+            android:id="@+id/text_"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:text=" סוג הדם שלך אינו ידוע במערכת"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,VisualLintOverlap" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/button_appointment"
+        android:layout_width="181dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#5F5D5D"
+        android:text="לקביעת תור"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/text_type_blood"
+        tools:layout_editor_absoluteX="115dp"
+        tools:ignore="HardcodedText,MissingConstraints" />
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="142dp"
+        android:layout_height="31dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="right"
+        android:text="Name"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/titleUser"
+        tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded,TextSizeCheck"
+        tools:layout_editor_absoluteY="157dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
