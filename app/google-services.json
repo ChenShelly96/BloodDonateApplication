@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1095870129904",
+    "project_id": "blooddonate-dd169",
+    "storage_bucket": "blooddonate-dd169.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1095870129904:android:7f4366b16f20ea346f0435",
+        "android_client_info": {
+          "package_name": "com.androidapp.blooddonate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1095870129904-6ra6234j2tcdjm43p2n7ik66rj6rjvp1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.androidapp.blooddonate",
+            "certificate_hash": "e998ced3a9d4ee73db3e6eb5829b5f542367215e"
+          }
+        },
+        {
+          "client_id": "1095870129904-j2h7g27tqpfqmfuk7cvr4pip5jhbd58j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV7OrTRgC7MFEQyjW3X8VVaOJeg0iGOKI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1095870129904-j2h7g27tqpfqmfuk7cvr4pip5jhbd58j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

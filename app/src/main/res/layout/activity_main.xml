@@ -25,15 +25,17 @@
 
     <TextView
         android:id="@+id/nameUserOutput"
-        android:layout_width="101dp"
-        android:layout_height="38dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="9dp"
         android:gravity="center"
         android:text="____"
+        android:textSize="24dp"
         app:layout_constraintEnd_toStartOf="@+id/titleUser"
         app:layout_constraintHorizontal_bias="0.922"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="HardcodedText,MissingConstraints"
-        tools:layout_editor_absoluteY="104dp" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="HardcodedText,MissingConstraints" />
 
     <TextView
         android:id="@+id/titleUserType3"
@@ -53,18 +55,19 @@
         android:id="@+id/imageView"
         android:layout_width="206dp"
         android:layout_height="95dp"
+        android:importantForAccessibility="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.798"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/blood_logo"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="-1dp"
-        android:importantForAccessibility="no" />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/titleUser"
         android:layout_width="41dp"
         android:layout_height="29dp"
+        android:layout_marginTop="18dp"
         android:text="היי "
         android:textColor="#111111"
         android:textSize="24sp"
@@ -72,8 +75,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.727"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck"
-        tools:layout_editor_absoluteY="113dp" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck" />
 
     <FrameLayout
         android:id="@+id/text_type_blood"
@@ -127,6 +130,7 @@
         android:layout_width="182dp"
         android:layout_height="55dp"
         android:layout_gravity="center"
+        android:layout_marginTop="64dp"
         android:backgroundTint="#5F5D5D"
         android:foregroundGravity="center"
         android:gravity="center"
@@ -134,11 +138,19 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="389dp"
+        app:layout_constraintTop_toBottomOf="@+id/text_type_blood"
         tools:ignore="HardcodedText,MissingConstraints" />
 
-    />
+    <!--TODO remove this button -->
+    <Button
+        android:id="@+id/signout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sign out"
+        app:layout_constraintTop_toBottomOf="@+id/button_appointment" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
