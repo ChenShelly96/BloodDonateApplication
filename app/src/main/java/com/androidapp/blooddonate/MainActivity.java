@@ -42,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         if(firebaseUser != null){
-            Log.d("user", firebaseUser.getDisplayName());
-            Log.d("user", firebaseUser.getUid());
             TextView nameTextView = findViewById(R.id.nameUserOutput);
             nameTextView.setText(firebaseUser.getDisplayName());
         }
