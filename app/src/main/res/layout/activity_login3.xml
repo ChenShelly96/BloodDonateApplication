@@ -122,26 +122,16 @@
                 android:id="@+id/google_sign_in_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_margin="16dp"/>
 
-                />
-
-            <Button
-                android:id="@+id/facebook_signin"
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/facebook_sign_in_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="F sign in " />
-
-            <!--            <com.facebook.login.widget.LoginButton-->
-            <!--                android:id="@+id/login_button"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_gravity="center_horizontal"-->
-            <!--                android:layout_marginTop="30dp"-->
-            <!--                android:layout_marginBottom="30dp"-->
-            <!--                android:layout_marginStart="30dp" />-->
-
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="16dp"
+                android:padding="20dp" />
         </LinearLayout>
 
 
