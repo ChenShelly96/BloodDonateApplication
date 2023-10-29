@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_height="match_parent"
+    tools:context=".LoginFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="fill"
+        android:orientation="vertical"
+        tools:context=".login.LoginFragment">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/blood_logo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="התחברות"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="שם משתמש"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+
+            android:id="@+id/username_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="20dp"
+
+            android:inputType="textPersonName"
+            android:maxLines="11"
+            android:padding="10dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="סיסמה"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/password_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="20dp"
+
+            android:hint=" "
+            android:inputType="textPassword"
+            android:padding="10dp"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+        <Button
+            android:id="@+id/LoginButton"
+            android:layout_width="273dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#5F5D5D"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:text="כניסה"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/click_here_to_register_textview"
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="או התחברות באמצעות"
+            android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center">
+        </LinearLayout>
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/google_sign_in_button"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/continue_with_google"-->
+<!--                android:contentDescription="sign in with google"-->
+<!--                />-->
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/google_sign_in_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/facebook_sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="16dp"
+            android:minHeight="48dp"
+            android:padding="20dp"
+            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+
+
+
+
+    </LinearLayout>
+</ScrollView>
