@@ -107,15 +107,15 @@ public class CalendarViewActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds : snapshot.getChildren()){
+                    String id = ds.getKey();
                     String date = ds.child("date").getValue(String.class);
                     String time = ds.child("time").getValue(String.class);
                     String location1 = ds.child("location").getValue(String.class);
                     String occupied = ds.child("occupied").getValue(String.class);
 
                     if(location.equals(location1) && (occupied == null || occupied.isEmpty())){
-                        apointmentList.add(new BloodApointment(date, time, location1, occupied));
+                        apointmentList.add(new BloodApointment(id, date, time, location1, occupied));
                     }
-
                 }
 
                 if(apointmentList.isEmpty()){
