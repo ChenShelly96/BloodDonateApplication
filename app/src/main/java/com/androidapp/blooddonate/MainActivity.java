@@ -1,8 +1,10 @@
 package com.androidapp.blooddonate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -25,6 +27,10 @@ import com.androidapp.blooddonate.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Calendar;
+
+import CalendarView.CalendarViewActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
@@ -45,6 +51,18 @@ public class MainActivity extends AppCompatActivity {
             TextView nameTextView = findViewById(R.id.nameUserOutput);
             nameTextView.setText(firebaseUser.getDisplayName());
         }
+        else{
+            Log.e("", "no user sign in");
+        }
+
+        Button appointmentBtn = findViewById(R.id.button_appointment);
+        appointmentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CalendarViewActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //TODO delete the signout option and button
         googleSignInClient = GoogleSignIn.getClient(MainActivity.this, GoogleSignInOptions.DEFAULT_SIGN_IN);

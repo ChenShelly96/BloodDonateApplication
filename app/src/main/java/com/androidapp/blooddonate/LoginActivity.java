@@ -57,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
         googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
         btGoogleSignIn.setOnClickListener((View.OnClickListener) view -> {
-            System.out.println("sign in press");
             // Initialize sign in intent
             Intent intent = googleSignInClient.getSignInIntent();
             // Start activity for result
