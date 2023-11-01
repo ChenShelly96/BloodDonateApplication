@@ -99,14 +99,13 @@
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:id="@+id/phone_number_edit_text"
+            android:id="@+id/email_edit_text"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="20dp"
-            android:inputType="number"
-            android:maxLength="11"
+            android:inputType="textEmailAddress"
             android:padding="10dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -119,13 +118,13 @@
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:id="@+id/email_edittext"
+            android:id="@+id/phone_edit_text"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="20dp"
-            android:inputType="textEmailAddress"
+            android:inputType="phone"
             android:padding="10dp"
             tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
         <TextView
@@ -137,7 +136,7 @@
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:id="@+id/password_edittext"
+            android:id="@+id/password_edit_text"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="20dp"

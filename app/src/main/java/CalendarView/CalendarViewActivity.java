@@ -49,8 +49,6 @@ public class CalendarViewActivity extends AppCompatActivity {
 
     private List<BloodApointment> apointmentList;
 
-    //private String[] times = {"10:00", "10:20"};
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -60,10 +58,6 @@ public class CalendarViewActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         apointmentList = new ArrayList<>();
 
-        // By ID we can use each component
-        // which id is assign in xml file
-        // use findViewById() to get the
-        // CalendarView and TextView
         calendar = (CalendarView)findViewById(R.id.calendar);
         date_view = (TextView)findViewById(R.id.date_view);
         no_apointment_view = (TextView) findViewById(R.id.no_apointment_text);

@@ -136,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, "succsess.",
                                             Toast.LENGTH_SHORT).show();
                                     continueToMainActivity();
-                               }
+                                }
                                 else{
                                     Toast.makeText(LoginActivity.this, "אימייל או סיסמה לא נכונים",
                                             Toast.LENGTH_SHORT).show();
@@ -150,7 +150,6 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if (firebaseUser != null) {
             System.out.println( "firebaseUser: " + firebaseUser.toString());
-            // When user already sign in redirect to profile activity
             continueToMainActivity();
         }
     }
