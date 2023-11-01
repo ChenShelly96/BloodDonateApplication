@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -16,6 +18,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.login.Login;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -38,6 +41,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
+
+    EditText emailEditText, passwordEditText;
+    Button signInBtn;
+
     SignInButton btGoogleSignIn;
     GoogleSignInClient googleSignInClient;
     CallbackManager callbackManager;
@@ -50,6 +57,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login3);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        emailEditText = findViewById(R.id.username_edit_text);
+        passwordEditText = findViewById(R.id.password_edit_text);
+        signInBtn = findViewById(R.id.LoginButton);
+
+        //Sign in with google
         btGoogleSignIn = findViewById(R.id.google_sign_in_button);
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -63,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivityForResult(intent, 100);
         });
 
+        //Sign in with facebook
         callbackManager = CallbackManager.Factory.create();
         LoginButton facebookLoginButton = findViewById(R.id.facebook_sign_in_button);
         facebookLoginButton.setReadPermissions("public_profile", "email");
@@ -106,13 +121,37 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //Sign in with email and password
+        signInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = emailEditText.getText().toString();
+                String password = passwordEditText.getText().toString();
 
-        firebaseAuth = FirebaseAuth.getInstance();
+                firebaseAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+                                    Toast.makeText(LoginActivity.this, "succsess.",
+                                            Toast.LENGTH_SHORT).show();
+                                    continueToMainActivity();
+                               }
+                                else{
+                                    Toast.makeText(LoginActivity.this, "אימייל או סיסמה לא נכונים",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
+        });
+
+        //check if user already logged in
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if (firebaseUser != null) {
             System.out.println( "firebaseUser: " + firebaseUser.toString());
             // When user already sign in redirect to profile activity
-            startActivity(new Intent(this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            continueToMainActivity();
         }
     }
 
@@ -133,10 +172,11 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    startActivity(new Intent(LoginActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                    continueToMainActivity();
                                 } else {
                                     // When task is unsuccessful display Toast
-                                    //displayToast("Authentication Failed :" + task.getException().getMessage());
+                                    Toast.makeText(LoginActivity.this, "Filed to sign in: "+ task.getException().getMessage(),
+                                            Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -157,12 +197,16 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser user = firebaseAuth.getCurrentUser();
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                    continueToMainActivity();
                 } else {
                     Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
+    }
+
+    private void continueToMainActivity(){
+        startActivity(new Intent(LoginActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 }
