@@ -30,19 +30,19 @@
         android:textStyle="bold" />
 
     <!-- Add CalendarView to display the Calendar -->
+
     <CalendarView
         android:id="@+id/calendar"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="19dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </CalendarView>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="בחר שעה"
         android:textColor="@color/black"
+        android:layout_margin="10dp"
         android:textSize="20dp"/>
 
     <GridView
@@ -52,6 +52,7 @@
         android:numColumns="4"
         android:scrollbars="vertical"
         android:visibility="visible"
+
         android:layoutDirection="rtl"/>
 
     <TextView
@@ -60,5 +61,9 @@
         android:layout_height="wrap_content"
         android:text="נראה שאין תורים פנוים ליום זה"
         android:visibility="invisible"/>
+
+<!--    <Button-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
 
 </LinearLayout>

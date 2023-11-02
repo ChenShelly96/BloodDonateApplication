@@ -40,14 +40,8 @@ public class GridAdapter extends BaseAdapter {
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
-//    public  GridAdapter(Context context, String[] times){
-//        this.context = context;
-//        this.times = times;
-//    }
-
     @Override
     public int getCount() {
-        //return times.length;
         return apointmentList.size();
     }
 
@@ -79,7 +73,6 @@ public class GridAdapter extends BaseAdapter {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "clicked on" + apointment.toString(), Toast.LENGTH_SHORT).show();
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
                 String msg = "האם ברצונך לקבוע תור ל" + "\n"

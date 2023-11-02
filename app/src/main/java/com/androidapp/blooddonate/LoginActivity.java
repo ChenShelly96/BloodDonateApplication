@@ -36,6 +36,9 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
     GoogleSignInClient googleSignInClient;
     CallbackManager callbackManager;
     FirebaseAuth firebaseAuth;
+    FirebaseFirestore firestore;
 
     String TAG = "facebook login";
 
@@ -58,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login3);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
 
         emailEditText = findViewById(R.id.username_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);
@@ -214,6 +219,28 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void continueToMainActivity(){
-        startActivity(new Intent(LoginActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
+        assert user != null;
+
+        DocumentReference doc = firestore.collection(getString(R.string.users_database_name)).document(user.getUid());
+
+       doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+           @Override
+           public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+               DocumentSnapshot snapshot = task.getResult();
+
+               Intent intent;
+
+               if(snapshot.exists()){
+                   intent = new Intent(LoginActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+               }
+               else{
+                   intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+                   intent.putExtra("registered", true);
+               }
+               startActivity(intent);
+           }
+       });
     }
 }
