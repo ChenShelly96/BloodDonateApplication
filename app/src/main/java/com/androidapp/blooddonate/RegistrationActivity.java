@@ -18,6 +18,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -25,12 +29,14 @@ public class RegistrationActivity extends AppCompatActivity {
     Button signupBtn;
 
     FirebaseAuth firebaseAuth;
+    FirebaseFirestore firestore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_registration);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
 
         firstName = (EditText) findViewById(R.id.userName);
         secondName = (EditText) findViewById(R.id.userFamName);
@@ -61,7 +67,17 @@ public class RegistrationActivity extends AppCompatActivity {
                                         UserProfileChangeRequest changeRequest = new UserProfileChangeRequest.Builder()
                                                 .setDisplayName(fNameStr + " " + lNameStr).build();
 
-                                        //TODO save the user data on the data base before moving to the next pages
+                                        Map<String, Object> userData = new HashMap<String, Object>();
+                                        userData.put("First name", fNameStr);
+                                        userData.put("Last name", lNameStr);
+                                        userData.put("Id", idText);
+                                        userData.put("Email", emailText);
+                                        userData.put("Phone", phoneText);
+                                        userData.put("Password", passwordText);//TODO save password in more secure way
+
+                                        firestore.collection(getString(R.string.users_database_name))
+                                                        .document(user.getUid()).set(userData);
+
                                         user.updateProfile(changeRequest).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {

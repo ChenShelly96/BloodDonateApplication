@@ -43,7 +43,7 @@ import org.json.JSONObject;
 public class LoginActivity extends AppCompatActivity {
 
     EditText emailEditText, passwordEditText;
-    Button signInBtn;
+    Button signInBtn, signupBtn;
 
     SignInButton btGoogleSignIn;
     GoogleSignInClient googleSignInClient;
@@ -62,6 +62,14 @@ public class LoginActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.username_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);
         signInBtn = findViewById(R.id.LoginButton);
+        signupBtn = findViewById(R.id.signup_button);
+
+        signupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
+            }
+        });
 
         //Sign in with google
         btGoogleSignIn = findViewById(R.id.google_sign_in_button);
