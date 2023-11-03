@@ -12,13 +12,29 @@
         android:orientation="vertical"
         tools:context=".login.LoginFragment">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layoutDirection="rtl"
+            >
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="179dp"
+                android:layout_height="86dp"
+                android:layout_gravity="start"
+                android:src="@drawable/blood_logo" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="179dp"
-            android:layout_height="86dp"
-            android:layout_gravity="right"
-            android:src="@drawable/blood_logo" />
+            <Button
+                android:id="@+id/signin_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center"
+                android:layout_marginStart="100dp"
+                android:text="התחבר"/>
+
+        </LinearLayout>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -99,14 +115,13 @@
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:id="@+id/phone_number_edit_text"
+            android:id="@+id/email_edit_text"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="20dp"
-            android:inputType="number"
-            android:maxLength="11"
+            android:inputType="textEmailAddress"
             android:padding="10dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -119,16 +134,17 @@
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:id="@+id/email_edittext"
+            android:id="@+id/phone_edit_text"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="20dp"
-            android:inputType="textEmailAddress"
+            android:inputType="phone"
             android:padding="10dp"
             tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
         <TextView
+            android:id="@+id/password_text_view"
             android:text="סיסמה"
             android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
@@ -137,7 +153,7 @@
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:id="@+id/password_edittext"
+            android:id="@+id/password_edit_text"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="20dp"
