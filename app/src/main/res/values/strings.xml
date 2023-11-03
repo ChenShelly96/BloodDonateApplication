@@ -7,14 +7,6 @@
     <string name="login_with">או התחבר באמצעות</string>
 
 
-
-    <string name="default_web_client_id">1095870129904-j2h7g27tqpfqmfuk7cvr4pip5jhbd58j.apps.googleusercontent.com</string>
-    <string name="facebook_app_id">284081444596276</string>
-    <string name="fb_login_protocol_scheme">fb284081444596276</string>
-    <string name="facebook_client_token">2fc4cf947d1e2397dd74219ba40f28ac</string>
-
-
-
     <string name="back4app_server_url">https://parseapi.back4app.com/</string>
     <string name="API_MAP_KEY">AIzaSyBpZNcyf2bQpGpjXjyLUm2ht5AEofEnXhU</string>
     <!-- Paste BOTH strings as required -->

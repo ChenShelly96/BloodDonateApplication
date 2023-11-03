@@ -204,7 +204,7 @@ public class MapTest extends FragmentActivity implements OnMapReadyCallback,
                 == PackageManager.PERMISSION_GRANTED) {
             LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
         }
-        getLocation();
+        //getLocation();
     }
 
     @Override
