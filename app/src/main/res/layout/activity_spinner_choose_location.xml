@@ -8,7 +8,6 @@
     android:orientation="vertical"
     tools:context=".SpinnerActivity">
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="0dp"
@@ -25,10 +24,12 @@
 
     <TextView
         android:id="@+id/titleUserType3"
-        android:layout_width="match_parent"
-        android:layout_height="41dp"
+        android:layout_width="363dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/imageView"
-        android:layout_marginTop="37dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="94dp"
+        android:layout_marginEnd="18dp"
         android:layout_marginBottom="169dp"
         android:text="בחירת מיקום רצוי "
         android:textColor="#0D0C0C"
@@ -50,7 +51,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.921"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/blood_logo"
+        app:srcCompat="@drawable/icon"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="16dp" />
 
@@ -61,5 +62,30 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="429dp" />
 
+    <Button
+        android:id="@+id/btnMap"
+        android:layout_width="206dp"
+        android:layout_height="60dp"
+        android:layout_alignStart="@+id/nav_view"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="198dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="565dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="בחירה ע&quot;י מיקום"
+        android:textColor="#040404"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="340dp"
+        android:layout_marginBottom="573dp"
+        app:srcCompat="@drawable/icons8_location_48" />
 
 </RelativeLayout>

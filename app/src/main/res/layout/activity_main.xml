@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/success"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="?attr/actionBarSize"
@@ -21,7 +21,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_nav_menu"
         tools:ignore="VisualLintBottomNav" />
-
 
     <TextView
         android:id="@+id/nameUserOutput"
@@ -60,8 +59,9 @@
         app:layout_constraintHorizontal_bias="0.798"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/blood_logo"
+        app:srcCompat="@drawable/icon"
         tools:ignore="MissingConstraints" />
+    <!--        app:srcCompat="@drawable/blood_logo"-->
 
     <TextView
         android:id="@+id/titleUser"
@@ -150,7 +150,5 @@
         android:layout_height="wrap_content"
         android:text="sign out"
         app:layout_constraintTop_toBottomOf="@+id/button_appointment" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

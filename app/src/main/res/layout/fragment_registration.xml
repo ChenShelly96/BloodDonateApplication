@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
->
+    android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_margin="0dp"
         android:layout_width="match_parent"
@@ -16,14 +16,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layoutDirection="rtl"
-            >
+            android:layoutDirection="rtl">
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="179dp"
                 android:layout_height="86dp"
                 android:layout_gravity="start"
-                android:src="@drawable/blood_logo" />
+                android:src="@drawable/icon" />
 
             <Button
                 android:id="@+id/signin_button"
@@ -32,14 +31,11 @@
                 android:layout_gravity="start|center"
                 android:layout_marginStart="100dp"
                 android:text="התחבר"/>
-
         </LinearLayout>
-
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="47dp"
-
             android:layout_marginLeft="20dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="20dp"
@@ -47,6 +43,7 @@
             android:text="לפני שנאתר את סוג הדם שלך ונמצא לך תור מתאים לתרומת דם, אנחנו צריכים לדעת כמה פרטים"
             android:textColor="@color/black"
             android:textSize="14sp"
+            android:textStyle="bold"
             tools:ignore="HardcodedText,TextSizeCheck" />
 
         <TextView
@@ -143,14 +140,16 @@
             android:inputType="phone"
             android:padding="10dp"
             tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
+
         <TextView
             android:id="@+id/password_text_view"
+            android:padding="10dp"
             android:text="סיסמה"
             android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            tools:ignore="HardcodedText" />
+            tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
 
         <EditText
             android:id="@+id/password_edit_text"

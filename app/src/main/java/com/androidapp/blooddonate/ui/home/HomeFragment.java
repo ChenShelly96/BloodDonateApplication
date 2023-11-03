@@ -26,6 +26,16 @@ public class HomeFragment extends Fragment {
 
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+      /*  Button button = container.findViewById(R.id.button_appointment);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SpinnerActivity spinnerActivity = (SpinnerActivity) getActivity();
+                spinnerActivity.onCreate(savedInstanceState);
+            }
+        });*/
         return root;
     }
 

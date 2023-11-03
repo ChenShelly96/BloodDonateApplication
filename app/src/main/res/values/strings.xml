@@ -49,5 +49,14 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
 
+    <string name="login_with">או התחבר באמצעות</string>
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+    <!-- Paste BOTH strings as required -->
+    <string name="add_location">חפש</string>
+    <string name="title_activity_maps" />
+    <eat-comment/>
+    <integer name="google_play_services_version">12451000</integer>
+    <!-- java/com/google/android/gmscore/integ/client/common/res/values/strings.xml -->
+    <eat-comment/>
 
 </resources>

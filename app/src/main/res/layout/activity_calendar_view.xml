@@ -18,7 +18,6 @@
         android:textColor="@color/black"
         android:text="בחירת מועד התור"/>
 
-    <!-- Add TextView to display the date -->
     <TextView
         android:id="@+id/date_view"
         android:layout_width="wrap_content"
@@ -28,8 +27,6 @@
         android:text="Set the Date"
         android:textColor="@android:color/background_dark"
         android:textStyle="bold" />
-
-    <!-- Add CalendarView to display the Calendar -->
 
     <CalendarView
         android:id="@+id/calendar"

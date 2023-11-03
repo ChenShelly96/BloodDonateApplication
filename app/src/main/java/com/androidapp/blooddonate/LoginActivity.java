@@ -1,5 +1,6 @@
 package com.androidapp.blooddonate;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,15 +12,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+
 import com.facebook.login.Login;
 import com.facebook.login.LoginManager;
+
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -44,7 +46,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
-
     EditText emailEditText, passwordEditText;
     Button signInBtn, signupBtn;
 
@@ -171,6 +172,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+
         if(requestCode == 100) { // request code 100 is when the user sign in with google
             Task<GoogleSignInAccount> signInAccountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
             if (signInAccountTask.isSuccessful()) {
@@ -213,7 +215,6 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
     }
@@ -225,22 +226,22 @@ public class LoginActivity extends AppCompatActivity {
 
         DocumentReference doc = firestore.collection(getString(R.string.users_database_name)).document(user.getUid());
 
-       doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-           @Override
-           public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-               DocumentSnapshot snapshot = task.getResult();
+        doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot snapshot = task.getResult();
 
-               Intent intent;
+                Intent intent;
 
-               if(snapshot.exists()){
-                   intent = new Intent(LoginActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-               }
-               else{
-                   intent = new Intent(LoginActivity.this, RegistrationActivity.class);
-                   intent.putExtra("registered", true);
-               }
-               startActivity(intent);
-           }
-       });
+                if(snapshot.exists()){
+                    intent = new Intent(LoginActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                }
+                else{
+                    intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+                    intent.putExtra("registered", true);
+                }
+                startActivity(intent);
+            }
+        });
     }
 }

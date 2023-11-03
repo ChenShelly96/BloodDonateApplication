@@ -5,15 +5,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.Navigation;
+import com.androidapp.blooddonate.databinding.ActivityMainBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -30,14 +35,12 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Calendar;
 
 import CalendarView.CalendarViewActivity;
-
 public class MainActivity extends AppCompatActivity {
-
     Toolbar toolbar;
     private ActivityMainBinding binding;
 
-    FirebaseAuth firebaseAuth;
-    GoogleSignInClient googleSignInClient;
+    private FirebaseAuth firebaseAuth;
+    private GoogleSignInClient googleSignInClient;
 
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
@@ -59,7 +62,9 @@ public class MainActivity extends AppCompatActivity {
         appointmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CalendarViewActivity.class);
+                Intent intent = new Intent(MainActivity.this, MapTest.class);
+                //TODO need to go to map activity
+                //Intent intent = new Intent(MainActivity.this, CalendarViewActivity.class);
                 startActivity(intent);
             }
         });
@@ -67,22 +72,22 @@ public class MainActivity extends AppCompatActivity {
         //TODO delete the signout option and button
         googleSignInClient = GoogleSignIn.getClient(MainActivity.this, GoogleSignInOptions.DEFAULT_SIGN_IN);
         findViewById(R.id.signout).setOnClickListener(view -> {
-                    // Sign out from google
-                    googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            // Check condition
-                            if (task.isSuccessful()) {
-                                // When task is successful sign out from firebase
-                                firebaseAuth.signOut();
-                                // Display Toast
-                                Toast.makeText(getApplicationContext(), "Logout successful", Toast.LENGTH_SHORT).show();
-                                // Finish activity
-                                finish();
-                            }
-                        }
-                    });
-                });
+            // Sign out from google
+            googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    // Check condition
+                    if (task.isSuccessful()) {
+                        // When task is successful sign out from firebase
+                        firebaseAuth.signOut();
+                        // Display Toast
+                        Toast.makeText(getApplicationContext(), "Logout successful", Toast.LENGTH_SHORT).show();
+                        // Finish activity
+                        finish();
+                    }
+                }
+            });
+        });
 
         //binding = ActivityMainBinding.inflate(getLayoutInflater());
         //setContentView(binding.getRoot());
@@ -97,5 +102,4 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);*/
     }
-
 }

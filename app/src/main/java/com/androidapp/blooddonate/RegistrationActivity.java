@@ -25,13 +25,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegistrationActivity extends AppCompatActivity {
-
     EditText firstName, secondName, id, email, phone, password;
     TextView passwordTextView;
     Button signupBtn, signinBtn;
 
-    FirebaseAuth firebaseAuth;
-    FirebaseFirestore firestore;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firestore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

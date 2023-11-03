@@ -13,9 +13,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.androidapp.blooddonate.databinding.ActivityCalendarViewBinding;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -68,8 +66,7 @@ public class CalendarViewActivity extends AppCompatActivity {
             // In this Listener have one method
             // and in this method we will
             // get the value of DAYS, MONTH, YEARS
-            public void onSelectedDayChange(
-                    @NonNull CalendarView view, int year, int month, int dayOfMonth)
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth)
             {
                 getAppointements("חריש אולם גפן", year + "-" + (month + 1) + "-" +dayOfMonth);
 
@@ -94,28 +91,27 @@ public class CalendarViewActivity extends AppCompatActivity {
         });
     }
 
-    private void getAppointements(String location, String date){
+    private void getAppointements(String location, String date) {
         apointmentList.clear();
         Query getApintmentsSlots = databaseReference.orderByChild("date").equalTo(date);
         getApintmentsSlots.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds : snapshot.getChildren()){
+                for (DataSnapshot ds : snapshot.getChildren()) {
                     String id = ds.getKey();
                     String date = ds.child("date").getValue(String.class);
                     String time = ds.child("time").getValue(String.class);
                     String location1 = ds.child("location").getValue(String.class);
                     String occupied = ds.child("occupied").getValue(String.class);
 
-                    if(location.equals(location1) && (occupied == null || occupied.isEmpty())){
+                    if (location.equals(location1) && (occupied == null || occupied.isEmpty())) {
                         apointmentList.add(new BloodApointment(id, date, time, location1, occupied));
                     }
                 }
 
-                if(apointmentList.isEmpty()){
+                if (apointmentList.isEmpty()) {
                     no_apointment_view.setVisibility(View.VISIBLE);
-                }
-                else{
+                } else {
                     no_apointment_view.setVisibility(View.INVISIBLE);
                 }
                 gridAdapter.setApointmentList(apointmentList);
