@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+
     android:background="@android:color/white"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginFragment">
 
     <LinearLayout
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:gravity="fill"
+        android:layout_height="0dp"
         android:orientation="vertical"
         tools:context=".login.LoginFragment">
 
@@ -19,7 +19,7 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:src="@drawable/blood_logo" />
+            android:src="@drawable/icon" />
 
         <TextView
             android:layout_width="match_parent"
@@ -96,19 +96,13 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/click_here_to_register_textview"
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="59dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="20dp"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text="או התחברות באמצעות"
-            android:textAppearance="@style/TextAppearance.AppCompat.Menu"
-            android:textColor="@color/black"
+            android:layout_height="29dp"
+            android:text= "@string/login_with"
+            android:textStyle="bold"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textColor="@color/black"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -126,23 +120,19 @@
 <!--                android:contentDescription="sign in with google"-->
 <!--                />-->
 
-            <com.google.android.gms.common.SignInButton
-                android:id="@+id/google_sign_in_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/google_sign_in_button"
+            android:layout_width="248dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content" />
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/facebook_sign_in_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="247dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="16dp"
-            android:minHeight="48dp"
-            android:padding="20dp"
+
             tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
-
-
 
 
     </LinearLayout>

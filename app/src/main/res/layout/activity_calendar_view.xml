@@ -1,30 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calender_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="CalendarView.CalendarViewActivity">
 
     <!-- Add TextView to display the date -->
+
+  <!--  <Button
+        android:id="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="303dp"
+        android:layout_marginBottom="93dp"
+        android:backgroundTint="#adadad"
+        android:text="10:30" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="202dp"
+        android:layout_marginBottom="87dp"
+        android:backgroundTint="#adadad"
+        android:text="10:45" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="87dp"
+        android:backgroundTint="#adadad"
+        android:text="11:00" />
+
+    <Button
+        android:id="@+id/button12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="198dp"
+        android:backgroundTint="#adadad"
+        android:text="09:15" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="207dp"
+        android:layout_marginBottom="149dp"
+        android:backgroundTint="#adadad"
+        android:text="09:45" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="108dp"
+        android:layout_marginBottom="150dp"
+        android:backgroundTint="#adadad"
+        android:text="10:00" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="147dp"
+        android:backgroundTint="#adadad"
+        android:text="10:15" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="301dp"
+        android:layout_marginBottom="147dp"
+        android:backgroundTint="#adadad"
+        android:text="09:30" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="89dp"
+        android:backgroundTint="#adadad"
+        android:text="11:15" />
+-->
+    <!-- Add CalendarView to display the Calendar -->
+
+   <!-- <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="107dp"
+        android:layout_marginBottom="203dp"
+        android:backgroundTint="#adadad"
+        android:text="09:00" />-->
+
     <TextView
         android:id="@+id/date_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="20dp"
-        android:text="Set the Date"
+        android:text="בחירת מועד התור"
         android:textColor="@android:color/background_dark"
         android:textStyle="bold" />
 
-    <!-- Add CalendarView to display the Calendar -->
     <CalendarView
         android:id="@+id/calendar"
-        android:layout_marginTop="80dp"
+        android:layout_width="381dp"
+        android:layout_height="292dp"
         android:layout_marginLeft="19dp"
+        android:layout_marginTop="80dp"></CalendarView>
+
+   <!-- <Button
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </CalendarView>
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="309dp"
+        android:layout_marginBottom="201dp"
+        android:backgroundTint="#adadad"
+        android:tag="08:30"
+        android:text="08:30" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="208dp"
+        android:layout_marginBottom="207dp"
+        android:backgroundTint="#adadad"
+
+        android:text="08:45" />-->
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="112dp"
+        android:layout_height="72dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="14dp"
+        app:srcCompat="@drawable/icon" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="193dp"
+        android:layout_height="46dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="291dp"
+        android:text=" בחר שעה פנויה מהרשימה"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="199dp"
+        android:layout_marginBottom="293dp"
+        android:layout_toStartOf="@+id/textView"
+        app:srcCompat="@drawable/icons8_clock_50" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        app:menu="@menu/bottom_nav_menu"
+        android:layout_marginBottom="-4dp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="232dp" />
+
 
 </RelativeLayout>

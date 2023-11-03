@@ -1,62 +1,58 @@
 package CalendarView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.TextView;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.CalendarView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.androidapp.blooddonate.R;
 
-public class CalendarViewActivity extends AppCompatActivity {
-    // Define the variable of CalendarView type
-    // and TextView type;
+public class CalendarViewActivity extends AppCompatActivity implements
+        AdapterView.OnItemSelectedListener {
+    String[] time = { "08:00", "08:15", "08:45", "09:00", "09:15", "09:30", "09:45"};
     CalendarView calendar;
     TextView date_view;
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate ( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_view);
 
-        // By ID we can use each component
-        // which id is assign in xml file
-        // use findViewById() to get the
-        // CalendarView and TextView
-        calendar = (CalendarView)
-                findViewById(R.id.calendar);
-        date_view = (TextView)
-                findViewById(R.id.date_view);
+        Spinner spin = findViewById(R.id.spinner);
+        spin.setOnItemSelectedListener(this);
+        calendar = findViewById(R.id.calendar);
+        date_view = findViewById(R.id.date_view);
 
+        ArrayAdapter<String> aa = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, time);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin.setAdapter(aa);
         // Add Listener in calendar
-        calendar
-                .setOnDateChangeListener(
-                        new CalendarView
-                                .OnDateChangeListener() {
-                            @Override
+        calendar.setOnDateChangeListener(
+                ( view, year, month, dayOfMonth ) -> {
 
-                            // In this Listener have one method
-                            // and in this method we will
-                            // get the value of DAYS, MONTH, YEARS
-                            public void onSelectedDayChange(
-                                    @NonNull CalendarView view,
-                                    int year,
-                                    int month,
-                                    int dayOfMonth)
-                            {
 
-                                // Store the value of date with
-                                // format in String type Variable
-                                // Add 1 in month because month
-                                // index is start with 0
-                                String Date
-                                        = dayOfMonth + "-"
-                                        + (month + 1) + "-" + year;
+                    String Date = dayOfMonth + "-"
+                            + (month + 1) + "-" + year;
 
-                                // set this date in TextView for Display
-                                date_view.setText(Date);
-                            }
-                        });
+                    date_view.setText(Date);
+                });
+    }
+
+
+    @Override
+    public void onItemSelected ( AdapterView<?> parent, View view, int position, long id ) {
+        Toast.makeText(getApplicationContext(),time[position] , Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected ( AdapterView<?> parent ) {
+
     }
 }

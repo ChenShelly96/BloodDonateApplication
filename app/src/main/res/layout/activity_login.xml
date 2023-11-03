@@ -25,6 +25,11 @@
                 android:background="?attr/colorPrimary"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme" />
+
+            <LinearLayout
+                android:layout_width="361dp"
+                android:layout_height="362dp"
+                android:orientation="vertical"></LinearLayout>
         </FrameLayout>
 
        <!-- <include

@@ -18,7 +18,7 @@
             android:layout_width="179dp"
             android:layout_height="86dp"
             android:layout_gravity="right"
-            android:src="@drawable/blood_logo" />
+            android:src="@drawable/icon" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,6 +31,7 @@
             android:text="לפני שנאתר את סוג הדם שלך ונמצא לך תור מתאים לתרומת דם, אנחנו צריכים לדעת כמה פרטים"
             android:textColor="@color/black"
             android:textSize="14sp"
+            android:textStyle="bold"
             tools:ignore="HardcodedText,TextSizeCheck" />
 
         <TextView
