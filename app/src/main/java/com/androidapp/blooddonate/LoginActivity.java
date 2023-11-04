@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -47,7 +48,8 @@ import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
     EditText emailEditText, passwordEditText;
-    Button signInBtn, signupBtn;
+    Button signInBtn;
+    TextView signupBtn;
 
     SignInButton btGoogleSignIn;
     GoogleSignInClient googleSignInClient;
@@ -139,24 +141,25 @@ public class LoginActivity extends AppCompatActivity {
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = emailEditText.getText().toString();
-                String password = passwordEditText.getText().toString();
+                String email = emailEditText.getText().toString().trim();
+                String password = passwordEditText.getText().toString().trim();
 
-                firebaseAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(task.isSuccessful()){
-                                    Toast.makeText(LoginActivity.this, "succsess.",
-                                            Toast.LENGTH_SHORT).show();
-                                    continueToMainActivity();
+                if(checkInputOk(emailEditText) && checkInputOk(passwordEditText)) {
+                    firebaseAuth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(LoginActivity.this, "succsess.",
+                                                Toast.LENGTH_SHORT).show();
+                                        continueToMainActivity();
+                                    } else {
+                                        Toast.makeText(LoginActivity.this, "אימייל או סיסמה לא נכונים",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                                else{
-                                    Toast.makeText(LoginActivity.this, "אימייל או סיסמה לא נכונים",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                            });
+                }
             }
         });
 
@@ -244,4 +247,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    private boolean checkInputOk(EditText editText){
+        String text = editText.getText().toString();
+        if(text.isEmpty()){
+            editText.setError("לא יכול להיות ריק");
+            return false;
+        }
+        else{
+            editText.setError(null);
+            return true;
+        }
+    }
+
 }
