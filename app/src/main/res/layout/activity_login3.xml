@@ -99,7 +99,9 @@
             android:text="שכחת סיסמה? לחץ כאן"
             android:layout_gravity="center"
             android:gravity="end"
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/click_here_to_register_textview"
@@ -118,17 +120,17 @@
 
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/google_sign_in_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_width="370dp"
+                android:layout_height="53dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"/>
 
             <com.facebook.login.widget.LoginButton
                 android:id="@+id/facebook_sign_in_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="16dp"
-                android:padding="20dp" />
+                android:layout_width="360dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"/>
 
 <!--        <LinearLayout-->
 <!--            android:layout_width="match_parent"-->
@@ -167,7 +169,10 @@
             android:text="לא רשום עדיין? הרשם כאן"
             android:layout_gravity="center"
             android:gravity="end"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 </ScrollView>

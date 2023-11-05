@@ -26,8 +26,8 @@ import java.util.Map;
 
 public class RegistrationActivity extends AppCompatActivity {
     EditText firstName, secondName, id, email, phone, password;
-    TextView passwordTextView;
-    Button signupBtn, signinBtn;
+    TextView passwordTextView, signinBtn;
+    Button signupBtn;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firestore;
@@ -49,7 +49,7 @@ public class RegistrationActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password_edit_text);
         passwordTextView = (TextView)findViewById(R.id.password_text_view);
         signupBtn = (Button)findViewById(R.id.register_button);
-        signinBtn = (Button)findViewById(R.id.signin_button);
+        signinBtn = (TextView)findViewById(R.id.signin_button);
 
         if(registered){
             password.setVisibility(View.INVISIBLE);
@@ -141,7 +141,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private String checkName(EditText name){
-        String regEx = "\\b([A-ZÀ-ÿא-ת][-,a-z. 'א-ת]+[ ]*)+";
+        String regEx = "\\b([A-Z-,a-z. 'א-ת]+[ ]*)+";
 
         String nameText = name.getText().toString().trim();
 
@@ -151,7 +151,7 @@ public class RegistrationActivity extends AppCompatActivity {
             return null;
         }
         if(!nameText.matches(regEx)){
-            name.setError("שם צריך להכיל רק אותיות ורווחים");
+            name.setError("שם צריך להכיל רק אותיות");
             name.requestFocus();
             return null;
         }
@@ -203,9 +203,10 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private String checkPhone(){
+        String regEx = "05\\d(-?)\\d{7}";
         String phoneText = phone.getText().toString().trim();
 
-        if(phoneText.length() != 10){
+        if(!phoneText.matches(regEx)){
             phone.setError("מספר טלפון לא תקין");
             phone.requestFocus();
             return null;

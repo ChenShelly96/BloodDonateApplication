@@ -10,11 +10,11 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import models.BloodApointment;
+import models.BloodAppointment;
 
 public class ConfirmationActivity extends AppCompatActivity {
 
-    BloodApointment apointment;
+    BloodAppointment apointment;
 
     TextView nameText, locText, dateText, timeText;
     Button backBtn;
@@ -24,7 +24,7 @@ public class ConfirmationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation);
 
-        apointment = (BloodApointment) getIntent().getSerializableExtra("appointment");
+        apointment = (BloodAppointment) getIntent().getSerializableExtra("appointment");
 
         nameText = findViewById(R.id.cofirm_name_text);
         locText = findViewById(R.id.confirm_location_text);

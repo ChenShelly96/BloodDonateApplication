@@ -29,7 +29,9 @@
         android:layout_marginTop="9dp"
         android:gravity="center"
         android:text="____"
-        android:textSize="24dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/titleUser"
         app:layout_constraintHorizontal_bias="0.922"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,12 +40,13 @@
 
     <TextView
         android:id="@+id/titleUserType3"
-        android:layout_width="222dp"
-        android:layout_height="27dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="איזה כיף שהצטרפת "
-        android:textColor="#0D0C0C"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:layout_marginBottom="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,9 +70,9 @@
         android:id="@+id/titleUser"
         android:layout_width="41dp"
         android:layout_height="29dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="9dp"
         android:text="היי "
-        android:textColor="#111111"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +85,7 @@
         android:id="@+id/text_type_blood"
         android:layout_width="411dp"
         android:layout_height="177dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:background="#E31B2B"
         android:backgroundTint="#F13131"
         app:layout_constraintTop_toBottomOf="@+id/titleUserType3"
@@ -127,11 +130,11 @@
 
     <Button
         android:id="@+id/button_appointment"
-        android:layout_width="182dp"
+        android:layout_width="185dp"
         android:layout_height="55dp"
         android:layout_gravity="center"
         android:layout_marginTop="64dp"
-        android:backgroundTint="#5F5D5D"
+        android:backgroundTint="@color/colorAccent"
         android:foregroundGravity="center"
         android:gravity="center"
         android:text="לקביעת תור"
@@ -143,12 +146,17 @@
         app:layout_constraintTop_toBottomOf="@+id/text_type_blood"
         tools:ignore="HardcodedText,MissingConstraints" />
 
-    <!--TODO remove this button -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/signout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="sign out"
-        app:layout_constraintTop_toBottomOf="@+id/button_appointment" />
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:icon="@drawable/logout_icon"
+        app:iconSize="40dp"
+        app:iconTint="@color/black"
+        android:backgroundTint="@color/white"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

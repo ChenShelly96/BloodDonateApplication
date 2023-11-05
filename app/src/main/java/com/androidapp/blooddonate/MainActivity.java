@@ -62,14 +62,15 @@ public class MainActivity extends AppCompatActivity {
         appointmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MapTest.class);
+                //Intent intent = new Intent(MainActivity.this, MapTest.class);
                 //TODO need to go to map activity
-                //Intent intent = new Intent(MainActivity.this, CalendarViewActivity.class);
+                Intent intent = new Intent(MainActivity.this, CalendarViewActivity.class);
+                intent.putExtra("Location", "חריש אולם גפן" );
                 startActivity(intent);
             }
         });
 
-        //TODO delete the signout option and button
+
         googleSignInClient = GoogleSignIn.getClient(MainActivity.this, GoogleSignInOptions.DEFAULT_SIGN_IN);
         findViewById(R.id.signout).setOnClickListener(view -> {
             // Sign out from google

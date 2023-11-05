@@ -1,15 +1,17 @@
 package models;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
-public class BloodApointment implements Serializable {
+public class BloodAppointment implements Serializable {
     String id;
     String date;
     String time;
     String location;
     String occupied;
 
-    public BloodApointment(String id, String date, String time, String location, String occupied) {
+    public BloodAppointment(String id, String date, String time, String location, String occupied) {
         this.id = id;
         this.date = date;
         this.time = time;
@@ -44,5 +46,15 @@ public class BloodApointment implements Serializable {
     @Override
     public String toString() {
         return location + " " + date + " " + time;
+    }
+
+    public Map<String, Object> asMap(){
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("Id", id);
+        data.put("date", date);
+        data.put("time", time);
+        data.put("location", location);
+
+        return data;
     }
 }

@@ -5,6 +5,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="hello_blank_fragment">hello blank fragment</string>
     <string name="users_database_name">users</string>
+    <string name="appointments_database_name">appointments</string>
     <string name="title_activity_get_missing_data">GetMissingDataActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

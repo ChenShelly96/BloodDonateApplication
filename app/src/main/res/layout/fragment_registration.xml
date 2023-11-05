@@ -10,28 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layoutDirection="rtl"
         tools:context=".login.LoginFragment">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layoutDirection="rtl">
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="179dp"
-                android:layout_height="86dp"
-                android:layout_gravity="start"
-                android:src="@drawable/icon" />
-
-            <Button
-                android:id="@+id/signin_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start|center"
-                android:layout_marginStart="100dp"
-                android:text="התחבר"/>
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="179dp"
+            android:layout_height="86dp"
+            android:layout_gravity="start"
+            android:src="@drawable/icon" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,6 +34,16 @@
             tools:ignore="HardcodedText,TextSizeCheck" />
 
         <TextView
+            android:id="@+id/signin_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_margin="20dp"
+            android:text="יש לך משתמש? התחבר"
+            android:textSize="16dp"/>
+
+        <TextView
             android:text="שם פרטי"
             android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
@@ -57,52 +54,56 @@
         <EditText
             android:id="@+id/userName"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="20dp"
+            android:background="@drawable/custom_input"
             android:inputType="textPersonName"
             android:maxLength="11"
             android:padding="10dp"
             tools:ignore="LabelFor,SpeakableTextPresentCheck,VisualLintTextFieldSize" />
         <TextView
             android:text="שם משפחה"
-            android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             tools:ignore="HardcodedText" />
 
         <EditText
             android:id="@+id/userFamName"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="20dp"
+            android:background="@drawable/custom_input"
             android:maxLength="11"
             android:padding="10dp"
             tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
 
         <TextView
             android:text="תעודת זהות"
-            android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             tools:ignore="HardcodedText" />
 
         <EditText
             android:id="@+id/idUser"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="20dp"
+            android:background="@drawable/custom_input"
             android:maxLength="11"
             android:padding="10dp"
             tools:ignore="Autofill,SpeakableTextPresentCheck"
             android:inputType="number" />
+
         <TextView
             android:text="כתובת מייל"
             android:layout_marginStart="20dp"
@@ -114,10 +115,11 @@
         <EditText
             android:id="@+id/email_edit_text"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="20dp"
+            android:background="@drawable/custom_input"
             android:inputType="textEmailAddress"
             android:padding="10dp"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -133,17 +135,17 @@
         <EditText
             android:id="@+id/phone_edit_text"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="20dp"
+            android:background="@drawable/custom_input"
             android:inputType="phone"
             android:padding="10dp"
             tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/password_text_view"
-            android:padding="10dp"
             android:text="סיסמה"
             android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
@@ -154,24 +156,25 @@
         <EditText
             android:id="@+id/password_edit_text"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="20dp"
+            android:background="@drawable/custom_input"
             android:inputType="textPassword"
             android:padding="10dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/register_button"
-            android:layout_width="374dp"
-            android:layout_height="46dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:text="הרשמה"
             android:layout_gravity="center"
-            android:backgroundTint="#5F5D5D"
+            android:backgroundTint="@color/colorAccent"
             android:foregroundGravity="center"
             android:gravity="center"
             tools:ignore="VisualLintButtonSize" />
