@@ -36,7 +36,13 @@
             android:exported="true"></activity>
         <activity
             android:name=".ConfirmationActivity"
-            android:exported="false" />
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.INSERT" />
+                <data android:mimeType="vnd.android.cursor.dir/event" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
