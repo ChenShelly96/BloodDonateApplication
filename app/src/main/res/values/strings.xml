@@ -55,9 +55,9 @@
     <!-- Paste BOTH strings as required -->
     <string name="add_location">חפש</string>
     <string name="title_activity_maps" />
-    <eat-comment/>
+    <eat-comment />
     <integer name="google_play_services_version">12451000</integer>
     <!-- java/com/google/android/gmscore/integ/client/common/res/values/strings.xml -->
-    <eat-comment/>
+    <eat-comment />
 
 </resources>
