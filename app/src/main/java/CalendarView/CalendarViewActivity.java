@@ -2,6 +2,7 @@ package CalendarView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.Navigation;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -9,8 +10,10 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -38,15 +41,19 @@ import java.util.Map;
 import models.BloodAppointment;
 
 public class CalendarViewActivity extends AppCompatActivity {
+    //String[] locs = {"אשקלון" ,"בחירה מהרשימה", "שדרות", "נירים", "תל אביב-יפו", "זיקים", "רעננה", "הוד השרון", "באר שבע"};
+    String[] locs = {"טבריה ישוב", "היכל פיס ארנה י-ם", "מרכז דתי חיפה", "חריש אולם גפן", "בחירה מהרשימה"};
+
     // Define the variable of CalendarView type
     // and TextView type;
     CalendarView calendar;
-    TextView date_view, no_appointment_view;
+    TextView no_appointment_view;
     ActivityCalendarViewBinding binding;
     GridAdapter gridAdapter;
-    Button continueBtn;
+    Button continueBtn, mapBtn;
+    Spinner locationsSpinner;
 
-    String location;
+    String location = null, date = null;
 
     private DatabaseReference databaseReference;
     private List<BloodAppointment> appointmentList;
@@ -59,20 +66,53 @@ public class CalendarViewActivity extends AppCompatActivity {
         binding = ActivityCalendarViewBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        location = getIntent().getStringExtra("Location");
-
         databaseReference = FirebaseDatabase.getInstance().getReference();
         appointmentList = new ArrayList<>();
 
+        locationsSpinner = (Spinner) findViewById(R.id.location_spinner);
+        mapBtn = (Button) findViewById(R.id.chose_on_map_button);
+
         calendar = (CalendarView)findViewById(R.id.calendar);
-        date_view = (TextView)findViewById(R.id.date_view);
         no_appointment_view = (TextView) findViewById(R.id.no_appointment_text);
         continueBtn = (Button)findViewById(R.id.continue_button);
 
         gridAdapter = new GridAdapter(CalendarViewActivity.this, appointmentList);
         binding.appointmentGridView.setAdapter(gridAdapter);
 
-        //calendar.setMinDate(System.currentTimeMillis() - 1000);
+        //  initializing adapter for our spinner
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, locs);
+        //  setting drop down view resource for our adapter.
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //  setting adapter for spinner.
+        locationsSpinner.setAdapter(adapter);
+
+        //  adding click listener for our spinner
+        locationsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                location = locs[position];
+                getAppointments(location, date);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        String selection = "בחירה מהרשימה";
+        int spinnerPosition = adapter.getPosition(selection);
+        locationsSpinner.setSelection(spinnerPosition);
+
+        mapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Navigation.findNavController(v).navigate(R.id.map);
+            }
+        });
+
+
+        //calendar.setMinDate(System.currentTimeMillis() - 1000);//TODO remove from comment
 
         // Add Listener in calendar
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -82,15 +122,9 @@ public class CalendarViewActivity extends AppCompatActivity {
             // get the value of DAYS, MONTH, YEARS
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth)
             {
+                date = year + "-" + (month + 1) + "-" +dayOfMonth;
                 setSelected(-1);
-                getAppointments(location, year + "-" + (month + 1) + "-" +dayOfMonth);
-                // Store the value of date with
-                // format in String type Variable
-                // Add 1 in month because month
-                // index is start with 0
-                String Date = dayOfMonth + "-" + (month + 1) + "-" + year;
-                // set this date in TextView for Display
-                date_view.setText(Date);
+                getAppointments(location, date);
             }
         });
 
@@ -143,6 +177,11 @@ public class CalendarViewActivity extends AppCompatActivity {
     }
 
     private void getAppointments(String location, String date) {
+
+        if(location == null || date == null){
+            return;
+        }
+
         appointmentList.clear();
         Query getAppointmentsSlots = databaseReference.orderByChild("date").equalTo(date);
         getAppointmentsSlots.addListenerForSingleValueEvent(new ValueEventListener() {
