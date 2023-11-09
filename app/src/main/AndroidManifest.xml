@@ -92,6 +92,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".MapLocation"
+            android:exported="false"/>
+        <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />

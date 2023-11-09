@@ -1,8 +1,9 @@
 package CalendarView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.Navigation;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -19,6 +20,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.androidapp.blooddonate.ConfirmationActivity;
+import com.androidapp.blooddonate.MapLocation;
 import com.androidapp.blooddonate.databinding.ActivityCalendarViewBinding;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,6 +43,9 @@ import java.util.Map;
 import models.BloodAppointment;
 
 public class CalendarViewActivity extends AppCompatActivity {
+
+    final private int LOCATION_REQUEST_CODE = 100;
+
     //String[] locs = {"אשקלון" ,"בחירה מהרשימה", "שדרות", "נירים", "תל אביב-יפו", "זיקים", "רעננה", "הוד השרון", "באר שבע"};
     String[] locs = {"טבריה ישוב", "היכל פיס ארנה י-ם", "מרכז דתי חיפה", "חריש אולם גפן", "בחירה מהרשימה"};
 
@@ -57,7 +62,9 @@ public class CalendarViewActivity extends AppCompatActivity {
 
     private DatabaseReference databaseReference;
     private List<BloodAppointment> appointmentList;
-    private int selected;
+    private int selectedTimeIndex;
+
+    private ActivityResultLauncher<Intent> mapLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -65,6 +72,7 @@ public class CalendarViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityCalendarViewBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         appointmentList = new ArrayList<>();
@@ -104,10 +112,24 @@ public class CalendarViewActivity extends AppCompatActivity {
         int spinnerPosition = adapter.getPosition(selection);
         locationsSpinner.setSelection(spinnerPosition);
 
+        mapLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK) {
+                Intent data = result.getData();
+                if(data != null) {
+                    int i = data.getIntExtra("result", spinnerPosition);
+                    location = locs[i];
+                    locationsSpinner.setSelection(i);
+                }
+            }
+        } );
+
         mapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Navigation.findNavController(v).navigate(R.id.map);
+                Intent intent = new Intent(CalendarViewActivity.this, MapLocation.class);
+                intent.putExtra("locations", locs);
+                //startActivityForResult(intent, LOCATION_REQUEST_CODE);
+                mapLauncher.launch(intent);
             }
         });
 
@@ -123,7 +145,7 @@ public class CalendarViewActivity extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth)
             {
                 date = year + "-" + (month + 1) + "-" +dayOfMonth;
-                setSelected(-1);
+                setSelectedTimeIndex(-1);
                 getAppointments(location, date);
             }
         });
@@ -131,19 +153,19 @@ public class CalendarViewActivity extends AppCompatActivity {
         binding.appointmentGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                setSelected(position);
+                setSelectedTimeIndex(position);
             }
         });
 
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(selected < 0 || selected >= appointmentList.size()){
+                if(selectedTimeIndex < 0 || selectedTimeIndex >= appointmentList.size()){
                     Toast.makeText(CalendarViewActivity.this, "לא נבחרה שעה", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                BloodAppointment appointment = appointmentList.get(selected);
+                BloodAppointment appointment = appointmentList.get(selectedTimeIndex);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(CalendarViewActivity.this);
                 String msg = "האם ברצונך לקבוע תור ל" + "\n"
@@ -215,14 +237,14 @@ public class CalendarViewActivity extends AppCompatActivity {
         });
     }
 
-    private void setSelected(int selected){
-        this.selected = selected;
-        gridAdapter.setSelected(selected);
+    private void setSelectedTimeIndex(int selectedTimeIndex){
+        this.selectedTimeIndex = selectedTimeIndex;
+        gridAdapter.setSelected(selectedTimeIndex);
         gridAdapter.notifyDataSetChanged();
     }
 
     private boolean makeAppointment(BloodAppointment appointment){
-        if(selected < 0 || selected >= appointmentList.size()){
+        if(selectedTimeIndex < 0 || selectedTimeIndex >= appointmentList.size()){
             return false;
         }
 
