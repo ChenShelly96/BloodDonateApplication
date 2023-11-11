@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Intent intent = new Intent(MainActivity.this, MapTest.class);
-                //TODO need to go to map activity
                 Intent intent = new Intent(MainActivity.this, CalendarViewActivity.class);
                 intent.putExtra("Location", "חריש אולם גפן" );
                 startActivity(intent);
@@ -83,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
                         firebaseAuth.signOut();
                         // Display Toast
                         Toast.makeText(getApplicationContext(), "Logout successful", Toast.LENGTH_SHORT).show();
+
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
                         // Finish activity
                         finish();
                     }

@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -148,6 +149,15 @@ public class CalendarViewActivity extends AppCompatActivity {
                 setSelectedTimeIndex(-1);
                 getAppointments(location, date);
             }
+        });
+
+        binding.appointmentGridView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+
         });
 
         binding.appointmentGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

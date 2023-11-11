@@ -11,7 +11,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layoutDirection="rtl"
-        tools:context=".login.LoginFragment">
+        tools:context=".login.LoginFragment"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -172,6 +174,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
             android:text="הרשמה"
             android:layout_gravity="center"
             android:backgroundTint="@color/colorAccent"

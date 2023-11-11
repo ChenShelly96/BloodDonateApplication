@@ -52,10 +52,10 @@ public class RegistrationActivity extends AppCompatActivity {
         signinBtn = (TextView)findViewById(R.id.signin_button);
 
         if(registered){
-            password.setVisibility(View.INVISIBLE);
+            password.setVisibility(View.GONE);
             password.setError(null);
-            passwordTextView.setVisibility(View.INVISIBLE);
-            signinBtn.setVisibility(View.INVISIBLE);
+            passwordTextView.setVisibility(View.GONE);
+            signinBtn.setVisibility(View.GONE);
         }
 
         signinBtn.setOnClickListener(new View.OnClickListener() {
